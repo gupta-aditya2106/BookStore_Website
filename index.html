@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Book Shop</title>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+
+    <style type="text/css">
+        body{
+            margin-top:0px;
+            margin-left:0px;
+        }
+        #navigation{
+            height:80px;
+            width:100%;
+            background-color: white;
+            margin:0px;
+            position:fixed;
+            z-index: 2;
+            border-bottom: 1px solid black;
+        }
+        #navigation a{
+            text-decoration: none;
+            color: white;
+            scroll-behavior: smooth;
+        }
+        .fixedwidth{
+            width:1256px;
+            margin:0px auto;
+
+        }
+        #logo{
+            padding-top:2px;
+            padding-right:15px;
+            cursor: pointer;
+            float:left;
+        }
+        #signin{
+            padding-left: 12px;
+            padding-top: 6px;
+            padding-right: 95px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid black;
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            float: left;
+            cursor: pointer;
+        }
+        #signin img{
+            position: relative;
+            top:5px
+        }
+        #nav_links{
+        }
+        #nav_links li{
+            list-style: none;
+            font-weight: bold;
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-left:10px;
+            padding-left: 10px;
+            margin-right:10px;
+            padding-right: 10px;
+            margin-top: 2px;
+            padding-top:7px;
+            margin-bottom: 8px;
+            padding-bottom:7px;
+            float: left;  
+        }
+        #nav_links button{
+            border-radius: 16px;
+            padding: 7px 10px 7px 10px;
+            font-weight: bold;
+            background-color: green;
+            border-radius: 20px;
+            border:2px solid black;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            cursor: pointer;
+            overflow:hidden;
+            position: relative;
+            z-index: 1;
+        }
+        #nav_links button span{
+            background: rgb(3, 255, 3);
+            height: 100%;
+            width: 0%;
+            border-radius: 20px;
+            position:absolute;
+            z-index: -1;
+            left: 0;
+            bottom: 0;
+            transition: 0.5s;
+        }
+        #nav_links button:hover span{
+            width: 100%;
+        }
+        #nav_links button:hover{
+            box-shadow:  0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        #cover{
+            position:absolute;
+            margin-top:100px;
+            margin-left:15px;
+            margin-right:15px;
+            width:1320px;
+            height:525px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            border-bottom: 1px solid rgb(182, 179, 179);
+        }
+        #cover a{
+            text-decoration: none;
+            color: white;
+            scroll-behavior: smooth;
+        }
+        #cover_content{
+            width:100%;
+            position:absolute;
+            margin-left:90px;
+            margin-top:20px;
+        }
+        #cover_content h1{
+            font-size: 70px;
+            margin-bottom: 0px;
+            margin-top:0px;
+        }
+        #cover_content h2{
+            font-size: 35px;
+            margin-bottom: 0px;
+            margin-top:0px;
+            color: red;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #cover_content h3{
+            font-size: 25px;
+            padding-top: 0px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+            font-weight: 60%;
+            font-family: cursive;
+            color: rgb(48, 49, 47);
+            z-index: 1;
+        }
+        
+        #cover_pic{
+            position:absolute;
+            margin-top:100px;
+            margin-left:15px;
+            margin-right:15px;
+            width:1320px;
+            height:500px;
+            background-image: url("pictures/cover.jpg");
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            background-size: 1320px 500px;
+            background-position: center;
+            z-index: -1;
+        }
+        #cover_content button{
+            font-size:25px ;
+            width:250px;
+            padding: 10px 10px 10px 10px;
+            margin-top: 10px;
+            margin-left: 0px;
+            font-weight: bold;
+            background: green;
+            border-radius: 20px;
+            border:2px solid black;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            overflow:hidden;
+            position: relative;
+            z-index: 1;
+        }
+        #cover_content button span{
+            background: rgb(3, 255, 3);
+            height: 100%;
+            width: 0%;
+            border-radius: 20px;
+            position:absolute;
+            z-index: -1;
+            left: 0;
+            bottom: 0;
+            transition: 0.5s;
+        }
+        #cover_content button:hover span{
+            width: 100%;
+        }
+        #cover_content button:hover{
+            box-shadow:  0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        #container{
+            position:absolute;
+            width: 1256px;
+            margin-top:650px;
+            margin-left: 40px; 
+        }
+        #bs{
+            height:1610px;
+            padding-bottom: 15px;
+            padding-top: 100px;
+            border-bottom: 1px solid rgb(182, 179, 179);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            
+        }
+        #bs_head{
+            font-size: 65px;
+            color: red;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            text-align: center;
+            height: 130px;
+            padding-left: 30px;
+            padding-top:0px;
+            padding-bottom:10px;
+            margin-bottom: 20px;
+            background-color: rgba(243, 243, 243, 0.884);
+            margin-left:-26px;
+            margin-right:-40px;
+        }
+        #bs_head img{
+            position: relative;
+            top:20px;
+        }
+        #bs_head p{
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        #bs_head span{
+            color: rgb(5, 212, 5);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #bs_cards{
+            margin-top:0px;
+            margin-bottom: 10px;
+            margin-left:-26px;
+            margin-right:-40px;
+            background-color: rgba(235, 235, 235, 0.904);
+            border-radius: 20px;
+            height: 1430px;
+            border-bottom: 1px solid rgb(182, 179, 179);
+        }
+        .bs_card{
+            background-color: rgba(250, 233, 233, 0.979);
+            width:376px;
+            height: 630px;
+            float: left;
+            margin-left:30px;
+            margin-right:30px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border: 2px solid black;
+            
+        }
+        .bs_card:hover{
+            
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .bs_img{
+            margin-left:63px;
+            margin-top:22px;
+        }
+        .bs_img:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .bs_title{
+            width:340px;
+            margin:10px auto 5px;
+            background-color: rgb(255, 223, 223);
+            border-radius: 30px;
+            text-align: center;
+            font-size: 30px;
+            padding:5px;
+            font-weight: bold;
+        }
+        .bs_title:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .bs_genre{
+            width:100px;
+            margin-top:0px;
+            margin-right: 13px;
+            margin-bottom: 4px;
+            background-color: rgb(255, 223, 223);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 15px;
+            float: right;
+            padding:5px;
+        }
+        .bs_genre:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .bs_rating{
+            margin-left: 13px;
+            margin-top: 0px;
+            margin-bottom: 4px;
+            width:80px;
+            background-color: rgb(255, 223, 223);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 15px;
+            padding:0px 5px 3px 5px;
+        }
+        .bs_rating:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .bs_rating img{
+            position: relative;
+            top: 6px;
+            border-radius: 10px;
+        }
+        .bs_description{
+            width:340px;
+            margin:0px auto 5px;
+            background-color: rgb(255, 223, 223);
+            border-radius: 20px;
+            text-align: center;
+            font-size: 18px;
+            height: auto;
+            padding:10px;
+        }
+        .bs_description:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .bs_price{
+            width:150px;
+            margin-top:0px;
+            margin-right: 13px;
+            background-color: rgb(255, 223, 223);
+            border-radius: 30px;
+            text-align: right;
+            font-size: 25px;
+            float: right;
+            padding:5px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .bs_price:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .bs_price span{
+            font-size: 20px;
+            text-decoration: line-through;
+            color: grey;
+        }
+        .bs_add{
+            margin-top: 0px;
+            margin-left: 13px;
+            width:180px;
+            text-align: left;
+            font-size: 15px;
+        }
+        .bs_add button{
+            width:auto;
+            height: 40px;
+            margin-left:0px;
+            padding-bottom: 10px;
+            color: white;
+            font-weight: bold;
+            background-color: red;
+            border: 2px solid black;
+            border-radius:15px;
+            cursor: pointer;
+            transition:0.5s;
+            overflow:hidden;
+            position: relative;
+            z-index: 1;
+        }
+        .bs_add button span{
+            background: green;
+            height: 100%;
+            width: 0%;
+            border-radius: 15px;
+            position:absolute;
+            z-index: -1;
+            left: 0;
+            bottom: 0;
+            transition: 0.5s;
+        }
+        .bs_add button:hover span{
+            width: 100%;
+        }
+        .bs_add button:focus{
+            background-color: green;
+        }
+        .bs_add img{
+            position: relative;
+            top: 5px;
+            border-radius: 10px;
+        }
+        .seemore{
+            text-align: center;
+        }
+        .seemore button{
+            font-size:15px ;
+            width:170px;
+            padding: 10px 10px 10px 10px;
+            margin-top: 10px;
+            margin-left: 0px;
+            font-weight: bold;
+            background: green;
+            border-radius: 20px;
+            border:2px solid black;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            overflow:hidden;
+            position: relative;
+            z-index: 1;
+        }
+        .seemore button span{
+            background: rgb(3, 255, 3);
+            height: 100%;
+            width: 0%;
+            border-radius: 20px;
+            position:absolute;
+            z-index: -1;
+            left: 0;
+            bottom: 0;
+            transition: 0.5s;
+        }
+        .seemore button:hover span{
+            width: 100%;
+        }
+        .seemore button:hover{
+            box-shadow:  0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .seemore a{
+            text-decoration: none;
+            color: white;
+            scroll-behavior: smooth;
+        }
+
+
+        #rec{
+            padding-top:90px;
+            height: 1700px;
+            border-bottom: 1px solid rgb(182, 179, 179);
+        }
+        #rec_head{
+            margin-top: 0px;
+            padding-top: 0px;
+            padding-left: 30px;
+            padding-bottom: 10px;
+            height: 150px;
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: rgba(243, 243, 243, 0.884);
+            margin-left:-26px;
+            margin-right:-40px;
+        }
+        #rec_search{
+            margin-top: 130px;
+            float: right;
+            
+        }
+        #rec_search input{
+            height: 40px;
+            width: 600px;
+            background-color: white;
+            border: none;
+            font-size: 0.9em;
+            font-weight: bold;
+            color: black;
+            background-image: url(pictures/search.png);
+            background-size: 40px;
+            border: 1px solid black;
+            border-radius: 20px;
+            background-repeat: no-repeat;
+            background-position: right;
+            border-radius: 4px;
+            padding-left: 15px;
+        }
+        #rec_head1{
+            font-size: 25px;
+            margin-top: 0px;
+            font-family: cursive;
+            color:grey;
+            text-align: left;
+
+        }
+        #rec_head2{
+            font-size: 60px;
+            margin-bottom: 0px;
+            padding-top: 20px;
+            text-align: left;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            color:red;
+        }
+        #rec_cards{
+            margin-top:0px;
+            margin-bottom: 10px;
+            border-radius: 20px;
+            height: 1430px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgb(182, 179, 179);
+            margin-left:-26px;
+            margin-right:-40px;
+            background-color: rgba(235, 235, 235, 0.904);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .rec_card{
+            background-color: rgba(205, 255, 200, 0.979);
+            width:376px;
+            height: 620px;
+            float: left;
+            margin-left:30px;
+            margin-right:30px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            border: 2px solid black;
+        }
+        .rec_card:hover{
+            
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .rec_img{
+            margin-left:63px;
+            margin-top:22px;
+        }
+        .rec_img:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .rec_title{
+            width:340px;
+            margin:10px auto 5px;
+            background-color: rgb(230, 255, 229);
+            border-radius: 30px;
+            text-align: center;
+            font-size: 30px;
+            padding:5px;
+            font-weight: bold;
+        }
+        .rec_title:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .rec_genre{
+            width:100px;
+            margin-top:0px;
+            margin-right: 13px;
+            margin-bottom: 4px;
+            background-color: rgb(230, 255, 229);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 15px;
+            float: right;
+            padding:5px;
+        }
+        .rec_genre:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .rec_rating{
+            margin-left: 13px;
+            margin-top: 0px;
+            margin-bottom: 4px;
+            width:80px;
+            background-color: rgb(230, 255, 229);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 15px;
+            padding:0px 5px 3px 5px;
+        }
+        .rec_rating:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .rec_rating img{
+            position: relative;
+            top: 6px;
+            border-radius: 10px;
+        }
+        .rec_description{
+            width:340px;
+            margin:0px auto 5px;
+            background-color: rgb(230, 255, 229);
+            border-radius: 20px;
+            text-align: center;
+            font-size: 18px;
+            height: auto;
+            padding:10px;
+        }
+        .rec_description:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .rec_price{
+            width:150px;
+            margin-top:0px;
+            margin-right: 13px;
+            background-color: rgb(230, 255, 229);
+            border-radius: 30px;
+            text-align: right;
+            font-size: 25px;
+            float: right;
+            padding:5px;
+            font-weight: bold;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .rec_price:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .rec_price span{
+            font-size: 20px;
+            text-decoration: line-through;
+            color: grey;
+        }
+        .rec_add{
+            margin-left: 13px;
+            width:180px;
+            text-align: left;
+            font-size: 15px;
+        }
+        .rec_add button{
+            width:auto;
+            height: 40px;
+            margin-left:0px;
+            padding-bottom: 10px;
+            color: white;
+            font-weight: bold;
+            background-color: red;
+            border: 2px solid black;
+            border-radius:15px;
+            cursor: pointer;
+            transition:0.5s;
+            overflow:hidden;
+            position: relative;
+            z-index: 1;
+        }
+        .rec_add button span{
+            background: green;
+            height: 100%;
+            width: 0%;
+            border-radius: 15px;
+            position:absolute;
+            z-index: -1;
+            left: 0;
+            bottom: 0;
+            transition: 0.5s;
+        }
+        .rec_add button:hover span{
+            width: 100%;
+        }
+        .rec_add button:focus{
+            background-color: green;
+        }
+        .rec_add img{
+            position: relative;
+            top: 5px;
+            border-radius: 10px;
+        }
+
+
+
+        #rev{
+            padding-top:100px;
+            height: 1500px;
+
+        }
+        #rev_head{
+            margin-top: 0px;
+            padding-top: 0px;
+            padding-left: 30px;
+            padding-bottom: 10px;
+            height: 150px;
+            text-align: center;
+            margin-bottom: 20px;
+            background-color: rgba(243, 243, 243, 0.884);
+            margin-left:-26px;
+            margin-right:-40px;
+        }
+        #rev_head_pic{
+            float:left;
+            margin-top:5px;
+            margin-left: 290px;
+            position: absolute;
+
+        }
+        #rev_head_pic img{
+            border-radius: 80px;
+            border:1px solid black;
+        }
+        #rev_head1{
+            font-size: 24px;
+            margin-top: 2px;
+            font-family: cursive;
+            color:grey;
+
+        }
+        #rev_head2{
+            font-size: 60px;
+            padding-top: 20px;
+            margin-bottom: 0px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            color:rgb(6, 212, 6);
+        }
+
+        #rev_cards{
+            margin-top:0px;
+            margin-left:-26px;
+            margin-right:-40px;
+            background-color: rgba(235, 235, 235, 0.904);
+            height: 600px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        .rev_card{
+            background-color: rgb(255, 251, 0);
+            border: 2px solid black;
+            width:270px;
+            height: 470px;
+            float: left;
+            margin-left:46px;
+            margin-right:0px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        .rev_card:hover{
+            box-shadow: 0 25px 25px 0 rgba(0,0,0,0.2);
+            border: 2px solid black;
+        }
+        .rev_img{
+            margin-left: 95px;
+            margin-top:30px;
+            border-radius: 40px;
+            border: 1px solid black;
+        }
+        .rev_name{
+            width:180px;
+            margin:10px auto;
+            border-radius: 25px;
+            background-color: rgb(255, 255, 205);
+            border: 1px solid black;
+            text-align: center;
+            font-size: 20px;
+            padding:5px;
+            font-weight: bold;
+        }
+        .rev_description{
+            width:220px;
+            margin:10px auto;
+            background-color: rgb(255, 255, 205);
+            border-radius: 20px;
+            border: 1px solid black;
+            text-align: center;
+            font-size: 17px;
+            height: auto;
+            padding:10px;
+        }
+        #rev_write_head{
+            width: 100%;
+            height:auto;
+            padding-top:2px;
+            padding-bottom:2px;
+            margin-top: 40px;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+        #rev_write_head1{
+            font-size: 40px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #rev_forms{
+            margin-top: 0px;
+            height:390px;
+            background-color: rgb(219, 219, 219);
+            padding:30px 150px 30px 150px;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+        #form_name{
+            float: left;
+            width:400px;
+            background-color: rgb(196, 196, 196);
+            padding-left: 30px;
+            padding-right: 30px;
+            font-weight: bold;
+            border-radius:100px;
+        }
+        #form_name input{
+            width: 76%;
+            height: 40px;
+            padding-left: 15px;
+            border-radius:40px;
+        }
+        #form_name input:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        #form_email{
+            float:right;
+            width:400px;
+            background-color: rgb(196, 196, 196);
+            padding-left: 30px;
+            padding-right: 30px;
+            font-weight: bold;
+            border-radius:100px;
+        }
+        #form_email input{
+            width: 70%;
+            height: 40px;
+            padding-left: 15px;
+            border-radius:40px;
+        }
+        #form_email input:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        #form_review{
+            padding-left: 30px;
+            padding-right: 30px;
+            font-weight: bold;
+            margin-top:20px;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            background-color: rgb(196, 196, 196);
+        }
+        #form_review input{
+            width: 97%;
+            height: 100px;
+            padding-left: 15px;
+        }
+        #form_review input:hover{
+            border: 2px solid black;
+            box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        #submit{
+            margin-top: 20px;
+            text-align: center;
+        }
+        #submit button{
+            font-size:25px ;
+            width:250px;
+            padding: 10px 10px 10px 10px;
+            margin-top: 10px;
+            margin-left: 0px;
+            font-weight: bold;
+            background: red;
+            border-radius: 20px;
+            border:2px solid black;
+            cursor: pointer;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            overflow:hidden;
+            position: relative;
+            z-index: 1;
+        }
+        #submit button span{
+            background: rgb(3, 255, 3);
+            height: 100%;
+            width: 0%;
+            border-radius: 20px;
+            position:absolute;
+            z-index: -1;
+            left: 0;
+            bottom: 0;
+            transition: 0.5s;
+        }
+        #submit button:hover span{
+            width: 100%;
+        }
+        #submit button:hover{
+            box-shadow:  0 10px 10px 0 rgba(0,0,0,0.2);
+        }
+        #submit button:focus{
+            background-color: green;
+        }
+        
+        .clear{
+            clear: both;
+        }
+
+
+
+        #footer{
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: rgb(190, 174, 255);
+            color: black;
+            height:250px;
+            width: 1400;
+            margin:40px -55px 0px -55px;
+            padding: 8px 8px 8px 8px;
+        }
+        #footer a{
+            text-decoration: none;
+            color: black;
+        }
+        #footer a:hover{
+            font-weight: bold;
+        }
+
+        #footer_img{
+            margin: 40px 30px 20px 100px;
+            float: left;
+        }
+        #footer_contents{
+            float:left;
+            margin-left: 60px;
+            margin-right: 60px;
+        }
+        #footer_contents li{
+            margin:10px 0px 10px 50px;
+            list-style: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #footer_contents2{
+            float: left;
+            margin-left: 60px;
+            margin-right: 60px;
+        }
+        #footer_contents2 li{
+            list-style: none;
+            font-size: 16px;
+            margin:10px 50px 10px 50px;
+            cursor: pointer;   
+        }
+        
+        #footer_social{
+            margin-top:-20px;
+            width:100%;
+            height:100px;
+
+        }
+        #footer_social ul{
+            margin-left: 285px;
+        }
+        #footer_social li{
+            margin:30px 25x 20px 25px;
+            padding:20px 48px 20px 5px;
+            list-style: none;
+            float:left;
+            font-size: 20px;
+        }
+        #footer_social li img{
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        #copyright p{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 90%;
+            margin-top: 0px;
+            text-align: center;
+        }     
+
+    </style>
+
+    <body>
+        <div id="navigation">
+            <div class="fixedwidth">
+                <div id="logo">
+                    <img src="pictures/logo.png" width="230px">
+                </div>
+                <div id="signin">
+                    <img src="pictures/signin.jpg" height=25px> SIGN IN
+                </div>
+                <div id="nav_links">
+                    <ul>
+                        <li><button type="button"><span></span><a href="#cover">INTRO</a></button></li>
+                        <li><button type="button"><span></span><a href="#bs">BEST SELLING</a></button></li>
+                        <li><button type="button"><span></span><a href="#rec">OUR RECOMMENDATION</a></button></li>
+                        <li><button type="button"><span></span><a href="#rev">REVIEWS</a></button></li>
+                        <li><button type="button"><span></span><a href="#footer">CONTACT US</a></button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="cover">
+            <div id="cover_content">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <h2>Presenting</h2>
+                <h1>BOOK ADDA</h1>
+                <h3>A Gateway to Escape from World and </h3>
+                <h3>Opening Mind to Endless Possibilities</h3>
+                <button type="button"><span></span><a href="#bs">BEST SELLING</a></button>
+            </div>
+        </div>
+
+        <div id="cover_pic">
+        </div>
+
+        <div id="container">
+            <div id="bs">
+                <div id="bs_head">
+                    <p><span class="hover"><img src="pictures/bestseller.png" height="100px" width="100px"></span>BEST <span>Selling</span></p>
+                </div>
+                <div id="bs_cards">
+                    <div class="bs_card">
+                        <img src="pictures/book1.png" class="bs_img" height="300px" width="250px">
+                        <p class="bs_title"> The Monk Who Sold His Ferrari</p>
+                        <p class="bs_genre">FICTION</p>
+                        <p class="bs_rating"><img src="pictures/star.png" height="20px" width="20px">4.5/5</p>
+                        <p class="bs_description"> The Monk Who Sold His Ferrari is a revealing story that offers the readers a simple yet profound way to live life.</p>
+                        <p class="bs_price"><span>₹300</span> ₹219</p>
+                        <p class="bs_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="bs_card">
+                        <img src="pictures/book2.png" class="bs_img" height="300px" width="250px">
+                        <p class="bs_title"> The Phychology of Money</p>
+                        <p class="bs_genre">MONEY</p>
+                        <p class="bs_rating"><img src="pictures/star.png" height="20px" width="20px">4.6/5</p>
+                        <p class="bs_description">  In the psychology of money, the author shares 19 short stories exploring the strange ways people think about money and teaches you how to make better sense of one of life?s most important matters.</p>
+                        <p class="bs_price"><span>₹350</span> ₹249</p>
+                        <p class="bs_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="bs_card">
+                        <img src="pictures/book3.png" class="bs_img" height="300px" width="250px">
+                        <p class="bs_title">Chanakya Neeti</p>
+                        <p class="bs_genre">POLITICS</p>
+                        <p class="bs_rating"><img src="pictures/star.png" height="20px" width="20px">4.5/5</p>
+                        <p class="bs_description"> In this volume, Radhakrishnan Pillai offers a modern interpretation of Chanakya’s crisp and practical maxims in his characteristic easy-to-follow and elegant prose.</p>
+                        <p class="bs_price"><span>₹279</span> ₹199</p>
+                        <p class="bs_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="bs_card">
+                        <img src="pictures/book4.png" class="bs_img" height="300px" width="250px">
+                        <p class="bs_title"> Atomic Habits</p>
+                        <p class="bs_genre">SELF</p>
+                        <p class="bs_rating"><img src="pictures/star.png" height="20px" width="20px">4.6/5</p>
+                        <p class="bs_description"> The world-renowned habits expert James Clear has discovered another way to change your life and has shared that with us.</p>
+                        <p class="bs_price"><span>₹649</span> ₹519</p>
+                        <p class="bs_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="bs_card">
+                        <img src="pictures/book5.png" class="bs_img" height="300px" width="250px">
+                        <p class="bs_title"> RICH DAD POOR DAD</p>
+                        <p class="bs_genre">SELF</p>
+                        <p class="bs_rating"><img src="pictures/star.png" height="20px" width="20px">4.6/5</p>
+                        <p class="bs_description"> While so much in our world is changing a high speed, the lessons about money and the principles of Rich Dad Poor Dad haven’t changed.</p>
+                        <p class="bs_price"><span>₹350</span> ₹279</p>
+                        <p class="bs_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="bs_card">
+                        <img src="pictures/book6.png" class="bs_img" height="300px" width="250px">
+                        <p class="bs_title"> Concept of Physics by H.C Verma Part - I</p>
+                        <p class="bs_genre">PHYSICS</p>
+                        <p class="bs_rating"><img src="pictures/star.png" height="20px" width="20px">4.6/5</p>
+                        <p class="bs_description"> H C Verma s Concepts Of Physics is an all-inclusive book, which serves to detail out the ABC of physics in an intricate manner.</p>
+                        <p class="bs_price"><span>₹449</span> ₹349</p>
+                        <p class="bs_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="seemore">
+                        <button type="button"><span></span><a href="bs.html">SEE MORE</a></button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rec">
+                <div id="rec_search">
+                    <input type="text" placeholder="Search BOOKS" >
+                </div>
+                <div id="rec_head">
+                    <p id="rec_head2">Recommendations</p>
+                    <p id="rec_head1">Just for you</p>
+                </div>
+
+                <div id="rec_cards">
+                    <div class="rec_card">
+                        <img src="pictures/book7.png" class="rec_img" height="300px" width="250px">
+                        <p class="rec_title"> The Hunger Games</p>
+                        <p class="rec_genre">FICTION</p>
+                        <p class="rec_rating"><img src="pictures/star.png" height="20px" width="20px">4.3/5</p>
+                        <p class="rec_description">The Capitol is harsh and cruel and keeps the districts in line by forcing them all to send one boy and one girl between to participate in the annual Hunger Games, a fight to the death on live TV.</p>
+                        <p class="rec_price"><span>₹399</span> ₹319</p>
+                        <p class="rec_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="rec_card">
+                        <img src="pictures/book8.png" class="rec_img" height="300px" width="250px">
+                        <p class="rec_title"> The Alchemist</p>
+                        <p class="rec_genre">FICTION</p>
+                        <p class="rec_rating"><img src="pictures/star.png" height="20px" width="20px">4.6/5</p>
+                        <p class="rec_description">This story is about an Andalusian shepherd boy named Santiago who travels from his homeland in Spain to the Egyptian desert in search of a treasure buried in the Pyramids.</p>
+                        <p class="rec_price"><span>₹299</span> ₹235</p>
+                        <p class="rec_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="rec_card">
+                        <img src="pictures/book9.png" class="rec_img" height="300px" width="250px">
+                        <p class="rec_title">DOGLAPAN</p>
+                        <p class="rec_genre">STARTUPS</p>
+                        <p class="rec_rating"><img src="pictures/star.png" height="20px" width="20px">4.3/5</p>
+                        <p class="rec_description">This is the unfettered story of Ashneer Grover-the favourite and misunderstood poster boy of Start-up India.</p>
+                        <p class="rec_price"><span>₹350</span> ₹299</p>
+                        <p class="rec_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="rec_card">
+                        <img src="pictures/book10.png" class="rec_img" height="300px" width="250px">
+                        <p class="rec_title"> The Lean Startup</p>
+                        <p class="rec_genre">STARTUP</p>
+                        <p class="rec_rating"><img src="pictures/star.png" height="20px" width="20px">4.5/5</p>
+                        <p class="rec_description">Most new businesses fail. But most of those failures are preventable. This title offers a fresh approach to business that's being adopted around the world. </p>
+                        <p class="rec_price"><span>₹629</span> ₹519</p>
+                        <p class="rec_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="rec_card">
+                        <img src="pictures/book11.png" class="rec_img" height="300px" width="250px">
+                        <p class="rec_title">Get Epic Shit Done</p>
+                        <p class="rec_genre">SKILLS</p>
+                        <p class="rec_rating"><img src="pictures/star.png" height="20px" width="20px">4.5/5</p>
+                        <p class="rec_description">Written as a conversation between a student and a teacher, GET EPIC SHIT DONE answers 36 life questions that you face almost everyday, questions that you need answers to.</p>
+                        <p class="rec_price"><span>₹399</span> ₹209</p>
+                        <p class="rec_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="rec_card">
+                        <img src="pictures/book12.png" class="rec_img" height="300px" width="250px">
+                        <p class="rec_title">Build, Don't Talk</p>
+                        <p class="rec_genre">SKILLS</p>
+                        <p class="rec_rating"><img src="pictures/star.png" height="20px" width="20px">4.4/5</p>
+                        <p class="rec_description">Your school taught you how to run in the race; it didn't teach you how to win. And that's what this book is for. To help you win the race.</p>
+                        <p class="rec_price"><span>₹179</span> ₹131</p>
+                        <p class="rec_add"><button type="button"><img src="pictures/cart.png" height="20px" width="20px"><span></span> ADD TO CART</button></p>
+                    </div>
+                    <div class="seemore">
+                        <button type="button"><span></span><a href="recommendation.html">SEE MORE</a></button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="rev">
+                
+                <div id="rev_head">
+                    <div  id="rev_head_pic">
+                        <img src="pictures/review.png" width="150px" height="150px">
+                    </div>
+                    <p id="rev_head2">Reviews</p>
+                    <p id="rev_head1">What does our Customers Say</p>
+                </div>
+
+                <div id="rev_cards">
+                    <div class="rev_card">
+                        <img src="pictures/rev1.png" class="rev_img" height="80px" width="80px">
+                        <p class="rev_name">Ajay Oberoi</p>
+                        <p class="rev_description">Visiting this book store is like embarking on an enchanting adventure. The ambiance is cozy, inviting, and brimming with the irresistible scent of books. I've discovered countless treasures from their carefully curated collection. From classic masterpieces to contemporary bestsellers. This store is a true haven for bookworms, and I'm forever grateful to have found it.</p>
+                    </div>
+                    <div class="rev_card">
+                        <img src="pictures/rev2.png" class="rev_img" height="80px" width="80px">
+                        <p class="rev_name">Manav Singhaniya</p>
+                        <p class="rev_description">I absolutely adore this book store! The moment I step inside, I feel a magical connection to the world of literature. The vast selection of books is truly impressive, catering to every taste and genre. The staff members are incredibly knowledgeable and always ready to recommend a hidden gem or engage in a delightful conversation about books.</p>
+                    </div>
+                    <div class="rev_card">
+                        <img src="pictures/rev3.png" class="rev_img" height="80px" width="80px">
+                        <p class="rev_name">Tanya Mahajan</p>
+                        <p class="rev_description">I think I would not get my book here but they have very good and latest collection of Books.I found my book which I needed and the price is affordable.They also have rare collection of Indian and Western author's. The owner of the store is very humble.</p>
+                    </div>
+                    <div class="rev_card">
+                        <img src="pictures/rev4.png" class="rev_img" height="80px" width="80px">
+                        <p class="rev_name">Shanaya Singh</p>
+                        <p class="rev_description">This book store is a true gem in the heart of the city. As an avid reader, I have visited countless bookstores, but none have left such a lasting impression as this one. The layout is thoughtfully organized, making it easy to navigate through the vast selection. This store is a haven for book lovers, and I highly recommend it to anyone seeking a delightful reading experience.</p>
+                    </div>
+                    <div class="seemore">
+                        <button type="button"><span></span><a href="review.html">SEE MORE</a></button>
+                    </div>
+                </div>
+
+                <div id="rev_write_head">
+                    <p id="rev_write_head1">------------------------ Write about us here ------------------------</p>
+                </div>
+                <div id="rev_forms">
+                    <div id="form_name">
+                        <p>NAME: <input type="text" placeholder="Enter Your Name..."></p>
+                        
+                    </div>
+                    <div id="form_email">
+                        <p>EMAIL-ID: <input type="email" placeholder="Enter Your Email..."></p>
+                        
+                    </div>
+                    <div class="clear"></div>
+                    <div id="form_review">
+                        <p>TELL US ABOUT US</p>
+                        <input type="text" placeholder="Write a review">
+                    </div>
+                    <div id="submit">
+                        <button type="button"><span></span>SUBMIT</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="footer">
+                <div class="fixedwidth">
+                    <div id="footer_img">
+                        <img src="pictures/logo.png" width="350px">
+                    </div>
+
+                    <div id="footer_contents">
+                        <ul>
+                            <li><a href="genre.html">GENRES</a></li>
+                            <li><a href="categories.html">CATEGORIES</a></li>
+                            <li><a href="location.html">LOCATION</a></li>
+                            <li><a href="#cover">BACK TO TOP</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="footer_contents2">
+                        <ul>
+                            <li><a href="tnc.html">TERMS & CONDITION</a></li>
+                            <li><a href="privacy.html">PRIVACY POLICY</a></li>
+                            <li><a href="about.html">ABOUT US</a></li>
+                            <li><a href="blog.html">BLOG</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div id="footer_social">
+                        <ul>
+                            <li><a href="facebook.html"><img src="pictures/fb.png" height="40px" width="40px"></a></li>
+                            <li><a href="instagram.html"><img src="pictures/insta.png" height="40px" width="40px"></a></li>
+                            <li><a href="mail.html"><img src="pictures/mail.png" height="40px" width="40px"></a></li>
+                            <li><a href="twitter.html"><img src="pictures/twitter.png" height="40px" width="40px"></a></li>
+                            <li><a href="pinterest.html"><img src="pictures/pinterest.png" height="40px" width="40px"></a></li>
+                            <li><a href="linkedin.html"><img src="pictures/linkedin.png" height="40px" width="40px"></a></li>
+                            <li><a href="youtube.html"><img src="pictures/youtube.png" height="40px" width="40px"></a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="clear"></div>
+
+                    <div id="copyright">
+                        <p>&copy; All Copyrights of this Website are Reserved with the Owner </p>
+                    </div>
+                </div>
+    
+            </div>
+        </div>   
+    </body>
+</html>
